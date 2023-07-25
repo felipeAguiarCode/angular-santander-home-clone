@@ -1,30 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FeaturesService } from 'src/app/services/features.service';
+
 
 @Component({
 	selector: 'app-carousel-items',
 	templateUrl: './carousel-items.component.html',
 	styleUrls: ['./carousel-items.component.css']
 })
-export class CarouselItemsComponent {
-	visibleItems: { text: string; icon: string }[] = [];
-	items = [
-		{ text: 'Home', icon: 'Icon 1' },
-		{ text: 'Conta Corrente', icon: 'Icon 2' },
-		{ text: 'Transferências', icon: 'Icon 3' },
-		{ text: 'Pagamentos', icon: 'Icon 4' },
-		{ text: 'Cartões', icon: 'Icon 5' },
-		{ text: 'Empréstimos', icon: 'Icon 6' },
-		{ text: 'Outros', icon: 'Icon 7' }
-	];
-	activeIndex = 0;
+export class CarouselItemsComponent implements OnInit {
+	items: { description: string; icon: string }[] = [];
+	visibleItems: { description: string; icon: string }[] = [];
+	activeIndex: number = 0;
 
+	constructor(private service: FeaturesService) { }
 
-	ngOnInit() {
-		this.updateVisibleItems();
+	async ngOnInit() {
+		this.getFeatures();
+		console.log(this.items)
 	}
 
-	updateVisibleItems() {
-		this.visibleItems = this.items.slice(this.activeIndex, this.activeIndex + 3);
+	getFeatures() {
+		this.service.getFeature().subscribe(result => {
+			this.items = result.features;
+			this.updateVisibleItems();
+		})
+	}
+
+	async updateVisibleItems() {
+		this.visibleItems =
+			this.items.slice(this.activeIndex, this.activeIndex + 3);
 	}
 
 	moveLeft() {

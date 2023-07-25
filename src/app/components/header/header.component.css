@@ -52,6 +52,19 @@ header {
 	align-items: center;
 }
 
+.icons-box {
+	display: flex;
+	width: 10%;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.icons-box>*,
+.logo>* {
+	cursor: pointer;
+}
+
+
 /* .menu-icon {
 	font-size: 24px;
 	cursor: pointer;

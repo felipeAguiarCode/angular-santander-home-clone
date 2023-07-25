@@ -9,13 +9,17 @@
 			<p>xxxx</p>
 			<p>xxxx</p>
 			<p>xxxx</p>
-			<p>1111</p>
+			<p>{{accountData.card.number}}</p>
 		</div>
 	</div>
 
 	<div class="card-footer">
-		<p>Bem vindo, Felipe</p>
-		<p>Ag 0001</p>
-		<p>Cc 13.034942-1</p>
+		<p>Olá, {{accountData.name}}</p>
+		<p>Ag {{accountData.account.agency}}</p>
+		<p>Cc {{accountData.account.number}}</p>
+	</div>
+
+	<div class="card-limit">
+		<p>Limit: {{accountData.card.limit}}</p>
 	</div>
 </div>

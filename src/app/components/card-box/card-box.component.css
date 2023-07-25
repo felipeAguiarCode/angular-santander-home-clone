@@ -35,7 +35,14 @@
 }
 
 .card-footer {
+	font-size: 22px;
 	display: flex;
 	justify-content: space-around;
 	height: 30%;
+}
+
+.card-limit {
+	display: flex;
+	justify-content: flex-end;
+	font-size: medium;
 }
